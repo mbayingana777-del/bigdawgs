@@ -8,11 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Oswald', sans-serif;
@@ -49,16 +45,18 @@ body {
   flex-wrap: wrap;
 }
 
-.choice-buttons button {
+.choice-buttons button,
+#hud button {
   background: #15171c;
   border: 1px solid #2a2d35;
   color: #f5f5f5;
-  padding: 12px 20px;
+  padding: 10px 18px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.choice-buttons button:hover {
+.choice-buttons button:hover,
+#hud button:hover {
   border-color: #d4af37;
   color: #d4af37;
 }
@@ -73,71 +71,53 @@ body {
 
 .room {
   min-width: 100vw;
-  padding: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 70px;
 }
 
 .room h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
   color: #d4af37;
 }
 
 .room p {
-  max-width: 500px;
+  max-width: 600px;
   color: #cfcfcf;
+  margin-bottom: 20px;
 }
 
-/* ROOM STYLES */
-.bar {
-  background: linear-gradient(120deg, #16181e, #0e0f12);
-}
-
-.kitchen {
-  background: linear-gradient(120deg, #1b1e24, #101216);
-}
-
-.wings {
-  background: linear-gradient(120deg, #20160f, #0e0f12);
-}
-
-.latenight {
-  background: linear-gradient(120deg, #121317, #0a0b0e);
-}
-
-/* MENU LIST */
 .menu {
-  margin-top: 1.5rem;
+  columns: 2;
+  column-gap: 60px;
+}
+
+.menu h3 {
+  color: #f5f5f5;
+  margin: 20px 0 8px;
+  font-size: 1.2rem;
 }
 
 .menu li {
   list-style: none;
-  margin-bottom: 0.5rem;
+  margin-bottom: 6px;
   color: #e0e0e0;
 }
 
-/* NAV */
+/* ROOM COLORS */
+.bar { background: linear-gradient(120deg, #16181e, #0e0f12); }
+.kitchen { background: linear-gradient(120deg, #1b1e24, #101216); }
+.wings { background: linear-gradient(120deg, #20160f, #0e0f12); }
+.latenight { background: linear-gradient(120deg, #121317, #0a0b0e); }
+
+/* HUD */
 #hud {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 12px;
-}
-
-#hud button {
-  background: #15171c;
-  border: 1px solid #2a2d35;
-  color: #f5f5f5;
-  padding: 8px 14px;
-  cursor: pointer;
-}
-
-#hud button:hover {
-  border-color: #d4af37;
+  gap: 10px;
+  z-index: 10;
 }
 </style>
 </head>
@@ -157,61 +137,100 @@ body {
 </section>
 
 <main id="world">
-  <section class="room bar" id="bar">
-    <h2>The Bar</h2>
-    <p>Cold beer. Low light. No rush.</p>
-    <ul class="menu">
-      <li>Draft & Bottles</li>
-      <li>Happy Hour Specials</li>
-      <li>Whiskey & Shots</li>
-    </ul>
-  </section>
 
-  <section class="room kitchen" id="kitchen">
-    <h2>The Kitchen</h2>
-    <p>Burgers, hoagies, and food worth stopping for.</p>
-    <ul class="menu">
-      <li>Classic Cheeseburger</li>
-      <li>BBQ Bacon Burger</li>
-      <li>Steak Hoagie</li>
-    </ul>
-  </section>
+<!-- BAR -->
+<section class="room bar" id="bar">
+<h2>The Bar</h2>
+<p>Cold beer. Low light. No rush.</p>
 
-  <section class="room wings" id="wings">
-    <h2>Wing Station</h2>
-    <p>Heat levels. Sauce choices. No fear.</p>
-    <ul class="menu">
-      <li>Mild → Hot</li>
-      <li>Garlic Parmesan</li>
-      <li>Sweet Chili</li>
-    </ul>
-  </section>
+<ul class="menu">
+<h3>Drinks & Vibes</h3>
+<li>Draft Beer</li>
+<li>Bottles & Cans</li>
+<li>Whiskey & Shots</li>
+<li>Happy Hour (Mon–Fri 4–6)</li>
+</ul>
+</section>
 
-  <section class="room latenight" id="latenight">
-    <h2>Late Night</h2>
-    <p>Comfort food. Bad decisions. Good memories.</p>
-    <ul class="menu">
-      <li>Loaded Fries</li>
-      <li>Chicken Tenders</li>
-      <li>Nachos</li>
-    </ul>
-  </section>
-</main>
+<!-- KITCHEN -->
+<section class="room kitchen" id="kitchen">
+<h2>The Kitchen</h2>
+<p>Burgers, hoagies, sandwiches — built to satisfy.</p>
 
-<div id="hud">
-  <button onclick="goTo('bar')">Bar</button>
-  <button onclick="goTo('kitchen')">Kitchen</button>
-  <button onclick="goTo('wings')">Wings</button>
-  <button onclick="goTo('latenight')">Late Night</button>
-</div>
+<ul class="menu">
+<h3>Burgers</h3>
+<li>Hamburger</li>
+<li>Cheeseburger</li>
+<li>Double Cheeseburger</li>
+<li>Classic Cheeseburger</li>
+<li>Bacon Cheeseburger</li>
+<li>Mushroom Swiss Burger</li>
+<li>BBQ Bacon Burger</li>
+<li>Jalapeño Burger</li>
 
-<script>
-function goTo(id) {
-  document.getElementById('entry').style.display = 'none';
-  const target = document.getElementById(id);
-  target.scrollIntoView({ behavior: 'smooth', inline: 'start' });
-}
-</script>
+<h3>Sandwiches</h3>
+<li>Grilled Chicken Sandwich</li>
+<li>Crispy Chicken Sandwich</li>
+<li>Fish Sandwich</li>
+<li>BLT</li>
+<li>Club Sandwich</li>
 
-</body>
-</html>
+<h3>Paninis</h3>
+<li>Italian Panini</li>
+<li>Chicken Bacon Ranch Panini</li>
+<li>Turkey & Cheese Panini</li>
+<li>Steak Panini</li>
+
+<h3>Homestyle Hoagies</h3>
+<li>Italian Hoagie</li>
+<li>Turkey Hoagie</li>
+<li>Ham & Cheese Hoagie</li>
+<li>Steak Hoagie</li>
+<li>Chicken Hoagie</li>
+</ul>
+</section>
+
+<!-- WINGS -->
+<section class="room wings" id="wings">
+<h2>Wing Station</h2>
+<p>Fresh. Never frozen. Pick your heat.</p>
+
+<ul class="menu">
+<h3>Wing Orders</h3>
+<li>6 Wings</li>
+<li>12 Wings</li>
+<li>24 Wings</li>
+<li>50 Wings</li>
+
+<h3>Sauces</h3>
+<li>Mild</li>
+<li>Medium</li>
+<li>Hot</li>
+<li>BBQ</li>
+<li>Honey BBQ</li>
+<li>Garlic Parmesan</li>
+<li>Teriyaki</li>
+<li>Cajun</li>
+<li>Sweet Chili</li>
+</ul>
+</section>
+
+<!-- LATE NIGHT -->
+<section class="room latenight" id="latenight">
+<h2>Late Night</h2>
+<p>Comfort food. Bad decisions. Good memories.</p>
+
+<ul class="menu">
+<h3>Starters</h3>
+<li>Mozzarella Sticks</li>
+<li>Onion Rings</li>
+<li>Chicken Tenders</li>
+<li>Loaded Fries</li>
+<li>Pierogies</li>
+<li>Jalapeño Poppers</li>
+<li>Nachos</li>
+<li>Fried Pickles</li>
+
+<h3>Fresh Fries</h3>
+<li>Regular Fries</li>
+<l
