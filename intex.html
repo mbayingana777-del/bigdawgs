@@ -1,37 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Talerico’s Bar & Grill</title>
+<meta charset="UTF-8">
+<title>Big Dawgs Bar & Grill</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <style>
-    /* ALL STYLES HERE */
-  </style>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background: #0e0f12;
+  color: #f5f5f5;
+  overflow: hidden;
+}
+
+/* ENTRY */
+#entry {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #1b1d22, #0e0f12);
+  text-align: center;
+}
+
+#entry h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+#entry p {
+  color: #b5b5b5;
+  margin-bottom: 2rem;
+}
+
+.choice-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.choice-buttons button {
+  background: #15171c;
+  border: 1px solid #2a2d35;
+  color: #f5f5f5;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice-buttons button:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+/* WORLD */
+#world {
+  display: flex;
+  height: 100vh;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.room {
+  min-width: 100vw;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.room h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #d4af37;
+}
+
+.room p {
+  max-width: 500px;
+  color: #cfcfcf;
+}
+
+/* ROOM STYLES */
+.bar {
+  background: linear-gradient(120deg, #16181e, #0e0f12);
+}
+
+.kitchen {
+  background: linear-gradient(120deg, #1b1e24, #101216);
+}
+
+.wings {
+  background: linear-gradient(120deg, #20160f, #0e0f12);
+}
+
+.latenight {
+  background: linear-gradient(120deg, #121317, #0a0b0e);
+}
+
+/* MENU LIST */
+.menu {
+  margin-top: 1.5rem;
+}
+
+.menu li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  color: #e0e0e0;
+}
+
+/* NAV */
+#hud {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+#hud button {
+  background: #15171c;
+  border: 1px solid #2a2d35;
+  color: #f5f5f5;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+#hud button:hover {
+  border-color: #d4af37;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ENTRY / PLAYER CHOICE -->
-  <section id="entry">
-    <!-- buttons -->
+<section id="entry">
+  <h1>BIG DAWGS</h1>
+  <p>What brings you in?</p>
+
+  <div class="choice-buttons">
+    <button onclick="goTo('bar')">🍺 Just grabbing a drink</button>
+    <button onclick="goTo('kitchen')">🍔 I’m hungry</button>
+    <button onclick="goTo('wings')">🔥 Wings. Obviously.</button>
+    <button onclick="goTo('latenight')">🕐 Late night run</button>
+  </div>
+</section>
+
+<main id="world">
+  <section class="room bar" id="bar">
+    <h2>The Bar</h2>
+    <p>Cold beer. Low light. No rush.</p>
+    <ul class="menu">
+      <li>Draft & Bottles</li>
+      <li>Happy Hour Specials</li>
+      <li>Whiskey & Shots</li>
+    </ul>
   </section>
 
-  <!-- HORIZONTAL MAP -->
-  <main id="world">
-    <section class="room bar">...</section>
-    <section class="room kitchen">...</section>
-    <section class="room wings">...</section>
-    <section class="room latenight">...</section>
-  </main>
+  <section class="room kitchen" id="kitchen">
+    <h2>The Kitchen</h2>
+    <p>Burgers, hoagies, and food worth stopping for.</p>
+    <ul class="menu">
+      <li>Classic Cheeseburger</li>
+      <li>BBQ Bacon Burger</li>
+      <li>Steak Hoagie</li>
+    </ul>
+  </section>
 
-  <!-- JS -->
-  <script>
-    /* scroll logic */
-  </script>
+  <section class="room wings" id="wings">
+    <h2>Wing Station</h2>
+    <p>Heat levels. Sauce choices. No fear.</p>
+    <ul class="menu">
+      <li>Mild → Hot</li>
+      <li>Garlic Parmesan</li>
+      <li>Sweet Chili</li>
+    </ul>
+  </section>
+
+  <section class="room latenight" id="latenight">
+    <h2>Late Night</h2>
+    <p>Comfort food. Bad decisions. Good memories.</p>
+    <ul class="menu">
+      <li>Loaded Fries</li>
+      <li>Chicken Tenders</li>
+      <li>Nachos</li>
+    </ul>
+  </section>
+</main>
+
+<div id="hud">
+  <button onclick="goTo('bar')">Bar</button>
+  <button onclick="goTo('kitchen')">Kitchen</button>
+  <button onclick="goTo('wings')">Wings</button>
+  <button onclick="goTo('latenight')">Late Night</button>
+</div>
+
+<script>
+function goTo(id) {
+  document.getElementById('entry').style.display = 'none';
+  const target = document.getElementById(id);
+  target.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+}
+</script>
 
 </body>
 </html>
